@@ -97,6 +97,8 @@ states <- states %>% distinct( Name, STATE,CoName,CoCode) %>% mutate(STATE = as.
   left_join(states) %>% group_by(STATE, COUNTY, LATITUDE, LONGITUD)
 
 
-ggplot(statesOut, aes(x=long, y=lat)) + geom_polygon(aes(group=group,fill=lat)) + 
-  geom_point(county, aes(x=LONGITUD, y=LATITUDE), color='red')
+ggplot(statesOut, aes(x=long, y=lat)) + geom_polygon(aes(group=group)) + geom_polygon(data = county,
+               aes(x = LONGITUD, y = LATITUDE)) 
 ```
+
+couldnt get the map to work, but each row is a death in the data frame. I was meaning to grab each rows lat and lon and plot it on the map and the more in each state and group the more it got red/ whatever color i chose
