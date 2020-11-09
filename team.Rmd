@@ -47,6 +47,8 @@ two <- acc2 %>% filter(INJ_SEV == '4')
 summary(two)
 ```
 
+4 is the number to see who died so this dataframe only contains that
+
 ##3. Data 
 ```{r}
 three <- acc2 %>% group_by(MAKE, STATE) %>% drop_na(MAKE) %>% summarise(big_car = n())
@@ -69,6 +71,9 @@ three <- three %>% inner_join(statesOut , by = c('State' = 'region'))
  
 ggplot(statesOut, aes(x=long, y=lat)) + geom_polygon(aes(group = group)) + geom_text(data=three, aes(label = Make), size = 1)
 ```
+
+THe map is a little messy I couldnt quite get the labels to just be the center of the states they turned out to be the borders of the state which is annoying. 
+
  
 ##5. join data
 ```{r} 
@@ -78,6 +83,7 @@ str(five)
 ```
 
 data is joined by variable ST_CASE
+
 
 ##6.Tally number of accidents
 ```{r}
